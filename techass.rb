@@ -121,9 +121,12 @@ request5.body = {token: "8fe0646675b3c30b632bdf6decb23f1e"}.to_json
 # Send the request
 
 dating_hash = JSON.parse(http.request(request5).body)
+#in order to add second to the ISO8601 datestamp I had to convert
+#it to the Ruby class Time.
 datestamp = Time.parse(dating_hash["datestamp"])
 interval = dating_hash["interval"].to_i
 
+#Datestamp is converted to ISO8601 format
 datestamp = (datestamp + interval).iso8601
 
 
